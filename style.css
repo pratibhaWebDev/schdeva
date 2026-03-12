@@ -435,6 +435,92 @@ h1, h2, h3, .logo-text {
     margin-top: 1rem;
 }
 
+/* --- Digital Menu Section --- */
+.digital-menu {
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.qr-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    background: var(--bg-cream);
+    padding: 4rem;
+    border-radius: 40px;
+    border: 1px solid var(--border);
+}
+
+.qr-text h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.qr-benefits {
+    list-style: none;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.qr-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+}
+
+.qr-benefits i {
+    color: var(--primary);
+}
+
+.qr-image-card {
+    display: flex;
+    justify-content: center;
+}
+
+.qr-frame {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.qr-frame:hover {
+    transform: scale(1.05);
+}
+
+.qr-frame img {
+    width: 250px;
+    height: 250px;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+}
+
+.qr-frame p {
+    font-weight: 700;
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
+    .qr-container {
+        grid-template-columns: 1fr;
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .qr-benefits {
+        align-items: center;
+    }
+}
+
 /* --- Contact Section --- */
 .grid-2 {
     display: grid;
@@ -595,6 +681,7 @@ h1, h2, h3, .logo-text {
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 1100;
 }
 
 .mobile-nav-toggle span {
@@ -602,10 +689,42 @@ h1, h2, h3, .logo-text {
     height: 3px;
     background: var(--primary);
     border-radius: 3px;
+    transition: var(--transition);
+}
+
+/* Hamburger Animation */
+.mobile-nav-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.mobile-nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+.mobile-nav-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
 }
 
 @media (max-width: 992px) {
-    .nav-links, .btn-header {
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--white);
+        padding: 6rem 2rem;
+        gap: 2rem;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        transition: 0.5s ease-in-out;
+        z-index: 1050;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .btn-header {
         display: none;
     }
     
@@ -623,15 +742,75 @@ h1, h2, h3, .logo-text {
     }
     
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
+    }
+
+    .section {
+        padding: 4rem 0;
     }
     
     .features-grid-bar {
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .feature-item-bar {
         justify-content: center;
     }
     
     .bulk-card {
         padding: 4rem 2rem;
+        text-align: center;
+    }
+
+    .bulk-features {
+        justify-content: center;
+    }
+
+    .brand-row {
+        justify-content: center;
     }
 }
+
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .badge {
+        font-size: 0.7rem;
+    }
+
+    .floating-badge {
+        padding: 1rem;
+        left: 10px;
+        bottom: 10px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .contact-form {
+        padding: 2rem 1.5rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+

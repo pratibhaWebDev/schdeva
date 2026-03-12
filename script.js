@@ -1,13 +1,23 @@
 // Mobile Menu Toggle
 const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
 const navLinks = document.querySelector('.nav-links');
+const navLinksA = document.querySelectorAll('.nav-links a');
 
 if (mobileNavToggle) {
     mobileNavToggle.addEventListener('click', () => {
+        mobileNavToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
-        // Simple animation for the hamburger menu could be added here
     });
 }
+
+// Close mobile menu on link click
+navLinksA.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileNavToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
+
 
 // Header Scroll Effect
 const header = document.querySelector('.header');
